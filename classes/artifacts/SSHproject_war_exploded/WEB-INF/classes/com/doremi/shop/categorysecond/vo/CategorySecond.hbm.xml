@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping>
+	<class name="com.doremi.shop.categorysecond.vo.CategorySecond" table="categorysecond">
+		<id name="csid">
+			<generator class="increment"/>
+		</id>
+		<property name="csname"/>
+		<many-to-one name="category" class="com.doremi.shop.category.vo.Category" column="cid" lazy="false" fetch="join"></many-to-one>
+		<set name="products" lazy="false" cascade="delete">
+		    <key column="csid"/>
+		    <one-to-many class="com.doremi.shop.product.vo.Product"/>
+		</set>
+	</class>
+</hibernate-mapping>

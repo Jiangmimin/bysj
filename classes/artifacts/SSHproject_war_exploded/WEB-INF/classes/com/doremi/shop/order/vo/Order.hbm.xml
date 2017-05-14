@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">   
+<hibernate-mapping>
+	<class name="com.doremi.shop.order.vo.Order" table="orders">
+		<id name="oid">
+			<generator class="increment"/>
+		</id>
+		<property name="total"/>
+		<property name="ordertime"/>
+		<property name="state"/>
+		<property name="name"/>
+		<property name="addr"/>
+		<property name="phone"/>
+		
+		<many-to-one name="user" class="com.doremi.shop.user.vo.User" column="u_id" lazy="false"></many-to-one>
+		
+		<!-- 级联orderItem表，cascade -->
+		<set name="orderItems" cascade="save-update" lazy="false">
+		    <key column="oid"/>
+		    <one-to-many class="com.doremi.shop.order.vo.OrderItem"/>
+		</set>	
+			
+	</class>
+</hibernate-mapping>

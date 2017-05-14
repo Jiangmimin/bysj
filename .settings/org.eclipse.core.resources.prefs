@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+encoding//WebContent/WEB-INF/jsp/down.jsp=UTF-8
+encoding//src/com/doremi/shop/order/adminaction/AdminOrderAction.java=UTF-8
+encoding//src/com/doremi/shop/order/service/OrderService.java=UTF-8
+encoding//src/com/doremi/shop/user/action/UserAction.java=UTF-8
