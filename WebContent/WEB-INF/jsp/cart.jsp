@@ -20,9 +20,6 @@
 	<div class="container cart">
 		<s:if test="#session.cart.cartItems.size() != 0">
 		<div class="span24">
-			<div class="step step1">
-				购物车信息
-			</div>
 				<table>
 					<tbody>
 					<tr>

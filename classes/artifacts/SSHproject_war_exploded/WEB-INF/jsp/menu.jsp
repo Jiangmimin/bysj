@@ -19,7 +19,7 @@
 			</s:if>
 			<s:else>
 			<li id="headerLogin" class="headerLogin" style="display: list-item;">
-				<s:property value="#session.existUser.name"/>
+				<s:property value="#session.existUser.username"/>
 				|</li>
 			<li id="headerLogin" class="headerLogin" style="display: list-item;">
 				<a href="${ pageContext.request.contextPath }/order_findByUid.action?page=1">我的订单</a>
@@ -28,16 +28,13 @@
 				style="display: list-item;"><a href="${ pageContext.request.contextPath }/user_quit.action">退出</a>|
 			</li>
 			</s:else>
-		
-			<li><a>会员中心</a> |</li>
-			<li><a>购物指南</a> |</li>
 			<li><a>关于我们</a></li>
 		</ul>
 	</div>
 	<div class="cart">
 		<a href="${ pageContext.request.contextPath }/cart_myCart.action">购物车   <span></span></a>
 	</div>
-	<div>
+	<div class="find">
 		<form action="${pageContext.request.contextPath}/product_search.action">
 			<input type="text" name="searchText" />
 			<input type="hidden" name="page" value="1" >

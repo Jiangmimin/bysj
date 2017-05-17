@@ -1,10 +1,13 @@
 package com.doremi.shop.user.action;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.doremi.shop.product.service.ProductService;
+import com.doremi.shop.product.vo.Product;
 import org.apache.struts2.ServletActionContext;
 
 import com.doremi.shop.user.service.UserService;
@@ -20,7 +23,7 @@ import com.opensymphony.xwork2.util.ValueStack;
 public class UserAction extends ActionSupport implements ModelDriven<User> {
 	// 模型驱动使用的对象
 	private User user = new User();
-
+//	private ProductService productService;
 	public User getModel() {
 		return user;
 	}
@@ -50,6 +53,12 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 	private String county;
 	public void setCounty(String county) {
 		this.county = county;
+	}
+
+	private ProductService productService;
+
+	public void setProductService(ProductService productService) {
+		this.productService = productService;
 	}
 	/**
 	 * 跳转到注册页面的执行方法
@@ -169,6 +178,12 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 			// 将用户的信息存入到session中
 			ServletActionContext.getRequest().getSession()
 					.setAttribute("existUser", existUser);
+
+			if (existUser.getUsername().equals("test")){
+				List<Product> rList=productService.findRecommender();
+			ServletActionContext.getRequest().getSession()
+					.setAttribute("rList", rList);
+			}
 			// 页面跳转
 			return "loginSuccess";
 		}

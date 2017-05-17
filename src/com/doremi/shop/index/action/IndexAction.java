@@ -32,7 +32,8 @@ public class IndexAction extends ActionSupport{
 		ActionContext.getContext().getValueStack().set("hList",hList);
 		List<Product> nList=productService.findNew();
 		ActionContext.getContext().getValueStack().set("nList",nList);
-
+//		List<Product> rList=productService.findRecommender();
+//		ActionContext.getContext().getValueStack().set("rList",rList);
 		return "index";
 	}
 	

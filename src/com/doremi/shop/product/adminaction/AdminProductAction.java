@@ -91,6 +91,7 @@ public class AdminProductAction extends ActionSupport implements
 			FileUtils.copyFile(upload, diskFile);
 			product.setImage("products/1/" + uploadFileName);
 		}
+		product.setPid(1);
 		productService.save(product);
 		return "saveSuccess";
 	}

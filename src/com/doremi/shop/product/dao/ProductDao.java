@@ -1,9 +1,11 @@
 package com.doremi.shop.product.dao;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Order;
@@ -30,7 +32,6 @@ public class ProductDao extends HibernateDaoSupport {
 		// 执行查询:
 		List<Product> list = this.getHibernateTemplate().findByCriteria(
 				criteria, 0, 10);
-		
 //		System.out.println(list);
 		return list;
 	}
@@ -45,7 +46,29 @@ public class ProductDao extends HibernateDaoSupport {
 		List<Product> list = this.getHibernateTemplate().findByCriteria(criteria, 0, 10);
 		return list;
 	}
-	
+	//首页上推荐商品的查询
+	public List<Product> findRecommender() {
+
+        List<Integer> aa=new ArrayList(){};
+		aa.add(70);aa.add(69);aa.add(18);aa.add(17);aa.add(10);
+//		List<Product> list=this.getHibernateTemplate().find(hql,10);
+//		List<Product> list = this.getHibernateTemplate().execute(new PageHibernateCallback<Product>(hql, new Object[]{10}, 0, 1));
+
+		String hql="from Product where pid in (:alist)";
+		Query query = getSession().createQuery(hql);
+		query.setParameterList("alist", aa);
+		List<Product> list=query.list();
+
+
+		System.out.print("bb");
+		System.out.print(list.size());
+		if(list!=null&&list.size()>0){
+			return list;
+		}
+		System.out.print("bb");
+		return null;
+	}
+
 	// 根据商品ID查询商品
 	public Product findByPid(Integer pid) {
 		return this.getHibernateTemplate().get(Product.class, pid);
@@ -54,7 +77,6 @@ public class ProductDao extends HibernateDaoSupport {
 	public int findByName(String searchText) {
 		String hql = "select count(*) from Product where pname like ?";
 		String s = "%"+searchText+"%";
-		System.out.println(s);
 		List<Long> list = this.getHibernateTemplate().find(hql,s);
 		if(list!=null&&list.size()>0){
 			return list.get(0).intValue();
@@ -94,7 +116,6 @@ public class ProductDao extends HibernateDaoSupport {
 			return list;
 		}
 		return null;
-		
 	}
 
 	// 根据二级分类查询商品个数
@@ -171,7 +192,5 @@ public class ProductDao extends HibernateDaoSupport {
 		}
 		return null;
 	}
-	
-	
 
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE struts PUBLIC
-    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
-"http://struts.apache.org/dtds/struts-2.0.dtd">
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+"http://struts.apache.org/dtds/struts-2.3.dtd">
 <!--这是头部信息-->
 <!--http://struts.apache.org/dtds/struts-2.0.dtd这里边的东西是个网址，需要自行配置，或者有网的话自行运行-->
 <struts>
@@ -11,17 +11,17 @@
 		name  属性：必须. 用于其他包应用当前包
 		extends :继承了默认的拦截器（？），拦截器站（？）等等所有配置，一般继承struts-default
 	 -->
-	 
+	<constant name="struts.devMode" value="false" />
 	<package name="shop" namespace="/" extends="struts-default">
            
 	    	<!-- 配置自定义拦截器 -->
-	   <interceptors>
-		   <interceptor name="privilegeInterceptor" class="com.doremi.shop.interceptor.PrivilegeInterceptor"/>
-		   <!--<interceptor-stack name="mydefault">
-			   <interceptor-ref name="defaultStack"/>
-			   <interceptor-ref name="privilegeInterceptor"/>
-		   </interceptor-stack>-->
-	   </interceptors>
+		<!-- <interceptors>
+             <interceptor name="PrivilegeInterceptor" class="com.doremi.shop.interceptor.PrivilegeInterceptor"
+                 <interceptor-stack name="mydefault">
+                 <interceptor-ref name="defaultStack"/>
+                 <interceptor-ref name="privilegeInterceptor"/>
+             </interceptor-stack>
+	   </interceptors>-->
 
 	    <global-results>
            <result name="msg">/WEB-INF/jsp/msg.jsp</result>
@@ -32,7 +32,7 @@
               <!-- 配置首页访问的Action -->
             <action name="index" class="indexAction">
             <result name="index">/WEB-INF/jsp/index.jsp</result>
-            </action>
+			</action>
 
              <!-- 配置用户模块的Action -->
             <action name="user_*" class="userAction" method="{1}">
@@ -76,34 +76,37 @@
 		
 		<action name="adminCategory_*" class="adminCategoryAction" method="{1}">
 		<result name="findAll">/admin/category/list.jsp</result>
+            <result name="findByKey">/admin/category/list.jsp</result>
 		<result name="saveSuccess" type="redirectAction">adminCategory_findAll.action</result>
 		<result name="deleteSuccess" type="redirectAction">adminCategory_findAll.action</result>
 		<result name="edit">/admin/category/edit.jsp</result>
 		<result name="update" type="redirectAction">adminCategory_findAll.action</result>
-		<interceptor-ref name="privilegeInterceptor"/>
-		<interceptor-ref name="defaultStack"/>
+		<!--<interceptor-ref name="PrivilegeInterceptor"/>
+		<interceptor-ref name="defaultStack"/>-->
 		</action>
 		
 		<action name="adminCategorySecond_*" class="adminCategorySecondAction" method="{1}">
 		<result name="findAllByPage">/admin/categorysecond/list.jsp</result>
+            <result name="findByKey">/admin/categorysecond/list.jsp</result>
 		<result name="addPage">/admin/categorysecond/add.jsp</result>
 		<result name="saveSuccess" type="redirectAction">adminCategorySecond_findAllByPage.action?page=1</result>
 		<result name="deleteSuccess" type="redirectAction">adminCategorySecond_findAllByPage.action?page=1</result>
 		<result name="editSuccess">/admin/categorysecond/edit.jsp</result>
 		<result name="update" type="redirectAction">adminCategorySecond_findAllByPage.action?page=1</result>
 
-	       <!-- <interceptor-ref name="privilegeInterceptor"/>
+	       <!-- <interceptor-ref name="PrivilegeInterceptor"/>
 			<interceptor-ref name="defaultStack"/>-->
 		</action>
 		
 		<action name="adminProduct_*" class="adminProductAction" method="{1}">
 		<result name="findAllByPage">/admin/product/list.jsp</result>
+            <result name="findByKey">/admin/product/list.jsp</result>
 		<result name="addPage">/admin/product/add.jsp</result>
 		<result name="saveSuccess" type="redirectAction">adminProduct_findAllByPage.action?page=1</result>
 		<result name="deleteSuccess" type="redirectAction">adminProduct_findAllByPage.action?page=1</result>
 		<result name="editSuccess">/admin/product/edit.jsp</result>
 		<result name="updatesucess" type="redirectAction">adminProduct_findAllByPage.action?page=1</result>
-		<!-- <interceptor-ref name="privilegeInterceptor"/>
+		<!-- <interceptor-ref name="PrivilegeInterceptor"/>
 			<interceptor-ref name="defaultStack"/> -->
 		</action>
 		
@@ -112,7 +115,7 @@
 			<result name="updateStateSuccess" type="redirectAction">adminOrder_findAll.action?page=1</result>
 			<result name="findOrderItem" >/admin/order/orderItem.jsp</result>
 	        <result name="findByState">/admin/order/list.jsp</result>
-	    <!--  <interceptor-ref name="privilegeInterceptor"/>
+	    <!--  <interceptor-ref name="PrivilegeInterceptor"/>
 			<interceptor-ref name="defaultStack"/> -->
 		</action>
 		
@@ -121,7 +124,8 @@
 			<result name="deleteSuccess" type="redirectAction">userAdmin_findAll.action?page=1</result>
 			<result name="editSuccess">/admin/user/edit.jsp</result>
 			<result name="updateSuccess" type="redirectAction">userAdmin_findAll.action?page=1</result>
-		<!--<interceptor-ref name="privilegeInterceptor"/>
+		   <result name="findByKey">/admin/user/list.jsp</result>
+		<!--<interceptor-ref name="PrivilegeInterceptor"/>
 			<interceptor-ref name="defaultStack"/> -->
 		</action>	   
     </package>

@@ -23,15 +23,14 @@
 
 		<div class="span24">
 		
-			<div class="step step1">
+		<%--<div class="step step1">
 				<ul>
 					
 					<li  class="current"></li>
 					<li  >我的订单</li>
 				</ul>
-			</div>
-	
-		
+			</div>--%>
+
 				<table>
 					<tbody>
 					<s:iterator var="order" value="pageBean.list">

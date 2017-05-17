@@ -20,10 +20,10 @@
 </div>
 <div class="container login">
 		<div class="span12">
-<div class="ad">
-					<img src="${pageContext.request.contextPath}/images/login.png" width="500" height="330" alt="会员登录" title="会员登录">
+<div class="ad" style="margin-top: 50px;" >
+					<img src="${pageContext.request.contextPath}/images/login.png" width="500" height="330" title="会员登录">
 </div>		</div>
-		<div class="span12 last">
+		<div class="span12 last" style="margin-top: 50px;">
 			<div class="wrap">
 				<div class="main">
 					<div class="title">
@@ -50,20 +50,7 @@
 									<input type="password" id="password" name="password" class="text" maxlength="20" autocomplete="off">
 								</td>
 							</tr>
-								
-							<tr>
-								<th>&nbsp;
-									
-								</th>
-								<td>
-									<label>
-										<input type="checkbox" id="isRememberUsername" name="isRememberUsername" value="true">记住用户名
-									</label>
-									<label>
-										&nbsp;&nbsp;<a >找回密码</a>
-									</label>
-								</td>
-							</tr>
+
 							<tr>
 								<th>&nbsp;
 									
@@ -92,5 +79,7 @@
 			</div>
 		</div>
 	</div>
+<div class="login_bottom" style="margin-bottom: 0px;">
 <%@ include file="down.jsp" %>
+</div>
 </body></html>

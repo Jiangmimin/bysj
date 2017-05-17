@@ -28,6 +28,11 @@ public class ProductService {
 		return productDao.findNew();
 	}
 
+	//首页推荐商品
+	public List<Product> findRecommender() {
+
+		return productDao.findRecommender();
+	}
 	// 根据商品ID查询商品
 	public Product findByPid(Integer pid) {
 		return productDao.findByPid(pid);
@@ -61,6 +66,7 @@ public class ProductService {
 		pageBean.setLimit(limit);
 		//  设置总记录数:
 		int totalCount = 0 ;
+//		System.out.print(cid);
 		totalCount = productDao.findCountCid(cid);
 		System.out.println(totalCount);
 		pageBean.setTotalCount(totalCount);
@@ -78,7 +84,7 @@ public class ProductService {
 		int begin = (page - 1) * limit;
 		List<Product> list = productDao.findByPageCid(cid,begin,limit);
 		pageBean.setList(list);
-		System.out.println(list.size());
+//		System.out.println(list.size());
 		return pageBean;
 	}
 

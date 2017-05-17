@@ -30,16 +30,13 @@ myFocus.set({id:'picBox'})
       </div>
         <div class="pic" >
           <ul>
-        <li><img src="${pageContext.request.contextPath}/images/pic1.jpg">
-        <li><img src="${pageContext.request.contextPath}/images/pic2.jpg">
+        <li><a href="${ pageContext.request.contextPath }/product_findByCid.action?cid=4&page=1"><img src="${pageContext.request.contextPath}/images/pic1.jpg">
+        <li><a href="${ pageContext.request.contextPath }/product_findByCid.action?cid=4&page=1"><img src="${pageContext.request.contextPath}/images/pic2.jpg"><a href="${ pageContext.request.contextPath }/product_findByCid.action?cid=4&page=1">
         <li><img src="${pageContext.request.contextPath}/images/pic3.jpg">
           </ul>
       </div>
    </div>
-   
-</div>	
-
-
+</div>
 
 <div class="container index"> 
 		<div class="span24">
@@ -71,6 +68,23 @@ myFocus.set({id:'picBox'})
 						</ul>						
            </div>
 		 </div>
+	<s:if test="#session.existUser!= null">
+	<div class="span24">
+		<div id="recommender" class="newProduct clearfix">
+			<div class="title">
+				<strong>推荐商品</strong>
+			</div>
+			<ul class="tabContent" style="display: block;">
+				<s:iterator var="q" value="#session.rList">
+					<li>
+						<a href="${pageContext.request.contextPath}/product_findByPid.action?pid=<s:property value="#q.pid"/>" target="_blank"><img src="${pageContext.request.contextPath}/<s:property value="#q.image"/>"  style="display: block;"></a>
+					</li>
+				</s:iterator>
+			</ul>
+		</div>
+	</div>
+	</s:if>
+
 	<div class="span24">
 			<div class="friendLink">
 				<dl>

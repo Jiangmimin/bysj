@@ -24,13 +24,13 @@
 
 		<div class="span24">
 		
-			<div class="step step1">
+		<%--	<div class="step step1">
 				<ul>
-					
+
 					<li  class="current"></li>
 					<li  >生成订单成功</li>
 				</ul>
-			</div>
+			</div>--%>
 	
 		
 				<table>

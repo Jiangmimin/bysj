@@ -111,6 +111,7 @@
 	<bean id="userAction" class="com.doremi.shop.user.action.UserAction" scope="prototype">
 		<!-- 注入Service -->
 		<property name="userService" ref="userService"/>
+		<property name="productService" ref="productService"/>
 	</bean>
 	<bean id="categoryAction" class="com.doremi.shop.category.action.CategoryAction" scope="prototype">
 	    <property name="categoryService" ref="categoryService"/>

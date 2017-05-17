@@ -23,7 +23,7 @@ html {
 	_height: 100%;
 	-webkit-text-size-adjust: none;
 	-ms-text-size-adjust: none;
-	_filter: expression(document.execCommand("BackgroundImageCache", false, true));
+	/*_filter: expression(document.execCommand("BackgroundImageCache", false, true));*/
 }
 
 body {
@@ -32,7 +32,7 @@ body {
 	font: 12px tahoma, Arial, Verdana, sans-serif;
 	color: #666666;
 	background-color: #ffffff;
-	_background-image: url(about: blank);
+	/*_background-image: url(about: blank);*/
 	_background-attachment: fixed;
 }
 
@@ -121,7 +121,7 @@ textarea {
 	position: fixed;
 	_position: absolute;
 	top: 0px;
-	_top: expression(documentElement.scrollTop + documentElement.clientHeight - this.offsetHeight);
+	/*_top: expression(documentElement.scrollTop + documentElement.clientHeight - this.offsetHeight);*/
 	left: 0px;
 	z-index: 99;
 	filter: alpha(opacity = 30);
@@ -263,7 +263,6 @@ div.container .prepend2 {
 div.container .prepend3 {
 	padding-left: 120px;
 }
-
 div.container .prepend4 {
 	padding-left: 160px;
 }
@@ -678,7 +677,7 @@ div.xxMessage {
 	position: fixed;
 	_position: absolute;
 	top: 25%;
-	_top: expression((document.documentElement.scrollTop || document.body.scrollTop) + Math.round(25 * (document.documentElement.offsetHeight || document.body.clientHeight) / 100) + "px");
+	/*_top: expression((document.documentElement.scrollTop || document.body.scrollTop) + Math.round(25 * (document.documentElement.offsetHeight || document.body.clientHeight) / 100) + "px");*/
 	left: 50%;
 	z-index: 100;
 	overflow: hidden;
@@ -728,7 +727,7 @@ span.loadingIcon {
 	display: -moz-inline-stack;
 	zoom: 1;
 	*display: inline;
-	background: url(../images/loading_icon.gif) center no-repeat;
+	/*background: url(../images/loading_icon.gif) center no-repeat;*/
 }
 
 span.loadingBar {
@@ -739,7 +738,7 @@ span.loadingBar {
 	display: -moz-inline-stack;
 	zoom: 1;
 	*display: inline;
-	background: url(../images/loading_bar.gif) center no-repeat;
+	/*background: url(../images/loading_bar.gif) center no-repeat;*/
 }
 
 /* ---------- Path ---------- */
@@ -813,9 +812,19 @@ div.header .cart {
 	_display: inline;
 	float: left;
 	padding-left: 50px;
-	margin-left: 100px;
+	margin-left: 300px;
 	margin-bottom: 4px;
 	background: url(../images/common.gif) -210px -180px no-repeat;
+}
+
+div.header .find {
+	width: 300px;
+	height: 30px;
+	line-height: 30px;
+	_display: inline;
+	float: right;
+	padding-left: 50px;
+	margin-bottom: 4px;
 }
 
 div.header .phone {

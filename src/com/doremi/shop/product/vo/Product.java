@@ -12,9 +12,12 @@ public class Product {
 	private String image;
 	private String pdesc;
 	private Integer is_hot;
+//	private Integer csid;
 	private Date pdate;
 	// 二级分类的外键:使用二级分类的对象.
 	private CategorySecond categorySecond;
+//	public  void setCsid(Integer csid){this.csid=csid;}
+//	public Integer getCsid(){return csid;}
 	public Integer getPid() {
 		return pid;
 	}
